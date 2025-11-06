@@ -1,10 +1,10 @@
 --NOS estamos adelantado pero veremos que es  EXCEPT 
 
 SELECT name 
-FROM cities 
+FROM cities  --Tabla de izquierda (TODAS las ciudades)
 EXCEPT
 SELECT name
-FROM countries 
+FROM countries   --Esta es la que excluye, solo las capitales (DERECHA) capitales
 WHERE region = 'Europe';
 
 --Esto nos devuelve todas las ciudades que no son capitales de paises en Europa porque 
