@@ -19,3 +19,4 @@ FROM cliente
 INNER JOIN pedido ON cliente.codigo_cliente = pedido.codigo_cliente;
 
 
+--Mas ejercicios de joins los pondre en el archivo repaso-join.sql y semiconsultas-semiuniones-antiuniones.sql
