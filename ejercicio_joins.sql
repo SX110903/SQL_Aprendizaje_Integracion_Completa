@@ -1,3 +1,12 @@
+
+--Bloque uno: Ejercicios de joins   
+--Consulta 1.1: Listar todos los clientes junto con su representante de ventas asignado
+--Consulta 1.2: Mostrar los pedidos con los detalles del cliente que los realizó
+--Consulta 1.3: Obtener los productos con su información de gama correspondiente
+--Consulta 1.4: Listar los detalles de pedidos con información completa del producto
+
+
+
 SELECT 
     cliente.nombre_cliente AS nombre_cliente, 
     empleado.nombre AS representante_ventas
