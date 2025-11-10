@@ -124,30 +124,32 @@ LEFT JOIN empleado AS e ON o.codigo_oficina = e.codigo_oficina;
 --=================================================================================
 
 --Consulta 3.1: Mostrar todos los pagos y la información del cliente (incluyendo pagos sin cliente asociado) Derecha pagos izquierda clientes
+-- 3.1: TODOS los pagos (incluyendo pagos sin cliente)
 SELECT
-    p.fecha_pago AS fecha_pago,
+    p.fecha_pago,
     p.total AS monto_pago,
-    p.forma_pago AS forma_pago,
-    c.nombre_cliente AS nombre_cliente
-FROM pago AS p
-RIGHT JOIN cliente AS c ON p.codigo_cliente = c.codigo_cliente;
---Consulta 3.2: Listar todos los pedidos y sus detalles (incluyendo pedidos sin detalles) Derecha pedidos izquierda detalle_pedido
+    p.forma_pago,
+    c.nombre_cliente
+FROM cliente AS c
+RIGHT JOIN pago AS p ON c.codigo_cliente = p.codigo_cliente;
+
+-- 3.2: TODOS los pedidos (incluyendo pedidos sin detalles)
 SELECT 
     pe.codigo_pedido AS numero_pedido,
-    pe.fecha_pedido AS fecha_pedido,
+    pe.fecha_pedido,
     pe.estado AS estado_pedido,
-    dp.codigo_producto AS codigo_producto,
+    dp.codigo_producto,
     dp.cantidad AS cantidad_pedida,
-    dp.precio_unidad AS precio_unidad
-FROM pedido AS pe
-RIGHT JOIN detalle_pedido AS dp ON pe.codigo_pedido = dp.codigo_pedido;
+    dp.precio_unidad
+FROM detalle_pedido AS dp
+RIGHT JOIN pedido AS pe ON dp.codigo_pedido = pe.codigo_pedido;
 
---Consulta 3.3: Mostrar todas las gamas de producto y los productos asociados (incluyendo gamas sin productos) Derecha gama_producto izquierda producto
+-- 3.3: TODAS las gamas (incluyendo gamas sin productos)
 SELECT
     gp.gama AS gama_producto,
-    gp.descripcion_texto AS descripcion_gama_texto,
-    gp.descripcion_html AS descripcion_gama_html,
+    gp.descripcion_texto,
+    gp.descripcion_html,
     p.nombre AS nombre_producto,
-    p.precio_venta AS precio_venta
-FROM gama_producto AS gp
-RIGHT JOIN producto AS p ON gp.gama = p.gama;
+    p.precio_venta
+FROM producto AS p
+RIGHT JOIN gama_producto AS gp ON p.gama = gp.gama;
